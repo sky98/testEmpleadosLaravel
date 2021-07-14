@@ -16,7 +16,7 @@ class EmpleadoController extends Controller
 
     public function __construct(StoreEmpleadoDB $storeEmpleadoDB){
         $this->storeDBEmpleado = $storeEmpleadoDB;
-    }
+    } 
 
     /**
      * Display a listing of the resource.
@@ -25,10 +25,7 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //dd("Hola");
-        $empleado = Empleado::paginate(50);
-        dd($empleado);
-        return EmpleadoResource::collection($empleado);
+        return EmpleadoResource::collection(Empleado::all());
     }
 
     /**
@@ -61,7 +58,7 @@ class EmpleadoController extends Controller
      * @param  \App\Models\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreEmpleado $request, Empleado $empleado)
+    public function update(Request $request, Empleado $empleado)
     {
         $empleado->update($request->all());
         return EmpleadoResource::make($empleado);

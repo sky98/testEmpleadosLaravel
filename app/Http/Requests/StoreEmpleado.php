@@ -29,7 +29,7 @@ class StoreEmpleado extends FormRequest
     {
         return [
             'id'            => 'required|unique:empleados',
-            'nombre'        => 'required|alpha',
+            'nombre'        => 'required|regex:/^[\pL\s\-]+$/u',
             'email'         => 'required|unique:empleados|email',
             'sexo'          => 'required|in:M,F',
             'area_id'       => 'required|exists:areas,id',

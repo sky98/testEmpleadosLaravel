@@ -2,19 +2,20 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Empleado;
 use App\Models\Area;
+use App\Models\Empleado;
 use Faker\Generator as Faker;
 
 $factory->define(Empleado::class, function (Faker $faker) {
-    $area = Area::find($faker->numberBetween($min = 1, $max = 20));
+    $areas = Area::all();
+    $azar = $faker->numberBetween($min = 0, $max = 19); 
     return [
         'id'            => $faker->unique->randomNumber($nbDigits = NULL, $strict = false),
-        'nombre'        => $fake->name,
+        'nombre'        => $faker->name,
         'email'         => $faker->unique()->safeEmail,
         'sexo'          => $faker->randomElement($array = array ('M','F')),
-        'area_id'       => $area->id,
+        'area_id'       => $areas[$azar]->id,
         'boletin'       => $faker->numberBetween($min = 0, $max = 1),
-        'description'   => $faker->text($maxNbChars = 80),
+        'descripcion'   => $faker->text($maxNbChars = 80),
     ];
 });

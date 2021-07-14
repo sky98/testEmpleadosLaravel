@@ -11,6 +11,6 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Models\Rol::class, 10)->create();
     }
 }
