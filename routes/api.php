@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::apiresource('/empleados', 'EmpleadoController');
+Route::apiresource('/roles', 'RolController');

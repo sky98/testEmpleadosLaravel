@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreRol;
+use App\Http\Resources\RolResource;
+use App\Http\Resources\RolCollection;
+use App\Repositorios\DataBase\StoreRolDB;
 
 class RolController extends Controller
 {
+
+    protected $storeDBRol;
+
+    public function __construct(StoreRolDB $storeRolDB){
+        $this->storeDBRol = $storeRolDB;
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +25,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return RolResource::collection(Rol::all());
     }
 
     /**
@@ -33,9 +34,10 @@ class RolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRol $request)
     {
-        //
+        $rol = $this->storeDBRol->create($request);
+        return RolResource::make($rol);
     }
 
     /**
@@ -44,20 +46,9 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function show(Rol $rol)
+    public function show(Rol $role)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Rol  $rol
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rol $rol)
-    {
-        //
+        return RolResource::make($role);
     }
 
     /**
@@ -67,9 +58,10 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, Rol $role)
     {
-        //
+        $role->update($request->all());
+        return RolResource::make($role);
     }
 
     /**
@@ -78,8 +70,9 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy(Rol $role)
     {
-        //
+        $role->delete();
+        return RolResource::collection(Rol::all());
     }
 }
