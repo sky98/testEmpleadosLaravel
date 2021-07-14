@@ -12,9 +12,9 @@ class Area extends Model
         'id', 'nombre'
     ];
 
-    public function empleado()
+    public function empleados()
     {
-        return $this->belongsTo('App\Models\Empleado');
+        return $this->hasMany('App\Models\Empleado');
     }
 
 }

@@ -13,9 +13,9 @@ class Empleado extends Model
         'id', 'nombre', 'email', 'sexo', 'area_id', 'boletin', 'descripcion'
     ];
 
-    public function areas()
+    public function area()
     {
-        return $this->hasMany('App\Models\Area');
+        return $this->belongsTo('App\Models\Area');
     }
 
     public function roles()

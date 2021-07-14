@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\AreaResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EmpleadoResource extends JsonResource
@@ -19,7 +20,8 @@ class EmpleadoResource extends JsonResource
             'nombre'        => $this->nombre,
             'email'         => $this->email,
             'sexo'          => $this->sexo,
-            'area_id'       => $this->area_id,
+            'area'          => $this->area->nombre,
+            'area_id'       => $this->area->id,
             'boletin'       => $this->boletin,
             'descripcion'   => $this->descripcion,
         ];

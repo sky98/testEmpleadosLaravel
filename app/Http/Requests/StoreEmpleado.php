@@ -28,13 +28,13 @@ class StoreEmpleado extends FormRequest
     public function rules()
     {
         return [
-            'id'            => 'required|unique:empleados',
             'nombre'        => 'required|regex:/^[\pL\s\-]+$/u',
             'email'         => 'required|unique:empleados|email',
             'sexo'          => 'required|in:M,F',
             'area_id'       => 'required|exists:areas,id',
             'boletin'       => 'required',
             'descripcion'   => 'required',
+            //'roles'         => 'required|exists:rols,id'
         ];
     }
 

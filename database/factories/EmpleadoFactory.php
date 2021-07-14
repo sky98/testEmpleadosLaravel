@@ -10,7 +10,6 @@ $factory->define(Empleado::class, function (Faker $faker) {
     $areas = Area::all();
     $azar = $faker->numberBetween($min = 0, $max = 19); 
     return [
-        'id'            => $faker->unique->randomNumber($nbDigits = NULL, $strict = false),
         'nombre'        => $faker->name,
         'email'         => $faker->unique()->safeEmail,
         'sexo'          => $faker->randomElement($array = array ('M','F')),

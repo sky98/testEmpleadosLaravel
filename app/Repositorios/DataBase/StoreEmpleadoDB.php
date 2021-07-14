@@ -8,7 +8,6 @@ class StoreEmpleadoDB
 {
     public function create($request){
         $empleado = Empleado::create([
-            'id'            => $request->id,
             'nombre'        => $request->nombre,
             'email'         => $request->email,
             'sexo'          => $request->sexo,
