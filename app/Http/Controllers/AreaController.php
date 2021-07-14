@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreArea;
+use App\Http\Resources\AreaResource;
+use App\Http\Resources\AreaCollection;
+use App\Repositorios\DataBase\StoreAreaDB;
 
 class AreaController extends Controller
 {
+
+    protected $storeDBArea;
+
+    public function __construct(StoreAreaDB $storeAreaDB){
+        $this->storeDBArea = $storeAreaDB;
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +25,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return AreaResource::collection(Area::all());
     }
 
     /**
@@ -33,9 +34,10 @@ class AreaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArea $request)
     {
-        //
+        $area = $this->storeDBArea->create($request);
+        return RolResource::make($area);
     }
 
     /**
@@ -46,18 +48,7 @@ class AreaController extends Controller
      */
     public function show(Area $area)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Area $area)
-    {
-        //
+        return AreaResource::make($area);
     }
 
     /**
@@ -69,7 +60,8 @@ class AreaController extends Controller
      */
     public function update(Request $request, Area $area)
     {
-        //
+        $area->update($request->all());
+        return AreaResource::make($area);
     }
 
     /**
@@ -78,8 +70,9 @@ class AreaController extends Controller
      * @param  \App\Models\Area  $area
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Area $area)
+    /* public function destroy(Area $area)
     {
-        //
-    }
+        $area->delete();
+        return AreaResource::collection(Area::all());
+    } */
 }

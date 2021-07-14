@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiresource('/empleados', 'EmpleadoController');
 Route::apiresource('/roles', 'RolController');
+Route::apiresource('/areas', 'AreaController')->except('destroy');

@@ -8,7 +8,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreRol extends FormRequest
+class StoreArea extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class StoreRol extends FormRequest
     public function rules()
     {
         return [
-            'id'            => 'required|unique:roles',
+            'id'            => 'required|unique:areas',
             'nombre'        => 'required|regex:/^[\pL\s\-]+$/u',
         ];
     }
