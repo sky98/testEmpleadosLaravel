@@ -34,7 +34,8 @@ class StoreEmpleado extends FormRequest
             'area_id'       => 'required|exists:areas,id',
             'boletin'       => 'required',
             'descripcion'   => 'required',
-            //'roles'         => 'required|exists:rols,id'
+            'roles'         => 'required|array',
+            //'roles.*.id'    => 'required|exists:rols,id'
         ];
     }
 

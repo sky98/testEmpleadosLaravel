@@ -8,7 +8,6 @@ class StoreAreaDB
 {
     public function create($request){
         $area = Area::create([
-            'id'            => $request->id,
             'nombre'        => $request->nombre,
         ]);
         return $area;    

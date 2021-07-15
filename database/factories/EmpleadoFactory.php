@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Empleado::class, function (Faker $faker) {
     $areas = Area::all();
-    $azar = $faker->numberBetween($min = 0, $max = 19); 
+    $azar = $faker->numberBetween($min = 0, $max = 4); 
     return [
         'nombre'        => $faker->name,
         'email'         => $faker->unique()->safeEmail,
