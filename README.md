@@ -1,78 +1,216 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Manual de instalación
+| Atributo                | Descripción            |
+| ----------------------- | ---------------------- |
+| Autor del documento :   | Rober Sehuanez Jimenez |
+| Fecha del documento :   | 12/07/2021             |
+| Version del documento : | 1.0.0                  |
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+### Requisitos de instalación
 
-## About Laravel
+<hr style="margin-bottom: 20px; margin-top:-10px; border: 0; border-top: 1px solid #000; ">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Docker
+- Docker compose
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+### Pasos de configuración
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<hr style="margin-bottom: 20px; margin-top:-10px; border: 0; border-top: 1px solid #000; ">
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+A continuacion se detalla el paso a paso para poder poner en marcha las aplicaciones requeridas.
 
-## Laravel Sponsors
+#### 1. Clonar repositorios 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Es recomendable destinar una carpeta de nuestro dispositivo para almacenar las aplicaciones que descargaremos a continuacion, caso que se despliegue sobre un ambiente pre-producción la ruta sera **/var/www/html/**. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+Nos ubicamos en la carpeta donde se descargara el proyecto, abrimos una terminal y ejecutamos el siguiente comando:
 
-## Contributing
+```bash
+git clone https://github.com/sky98/posAPIlaravel.git
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Descargamos las siguientes fuentes.
 
-## Code of Conduct
+```bash
+git clone https://github.com/sky98/posApiAngular.git
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 2. Configuración laravel
 
-## License
+##### 2.1 Configuración del .env
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Accedes al directorio donde descargamos nuestro proyecto y copiamos el .env.example con un nuevo nombre.
+
+```bash
+cp .env.example .env
+```
+
+Abrimos el archivo anteriormente copiado ya sea con nano o con el editor de texto de su preferencia.
+
+```bash
+nano .env
+```
+
+Configuramos los parametros de conexion a la base de datos y los parametros de la app tales como el nombre y el puerto.
+
+```bash
+APP_NAME=laravelapp
+APP_ENV=dev
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=reportlaravel
+DB_USERNAME=laraveluser
+DB_PASSWORD=password
+...
+```
+
+Estos parametros son configurables en caso prefiera colocar ya sea otros nombres o cambiar los parametros de conexion a la base de datos.
+
+##### 2.2 Creación de la imagen de la app
+
+Para crear la imagen de la app usaremos el siguiente comando que se encarga de construir las imagenes necesarias para ejecutar nuestra aplicación.
+
+```bash
+docker-compose build app
+```
+
+Este comando se puede tardar unos cuantos minutos mientras se descargan las imagenes que necesitamos. La salida deberia ser similar a esta.
+
+```bash
+Building app
+Step 1/11 : FROM php:7.4-fpm
+ ---> fa37bd6db22a
+Step 2/11 : ARG user
+ ---> Running in f71eb33b7459
+Removing intermediate container f71eb33b7459
+ ---> 533c30216f34
+Step 3/11 : ARG uid
+ ---> Running in 60d2d2a84cda
+Removing intermediate container 60d2d2a84cda
+ ---> 497fbf904605
+Step 4/11 : RUN apt-get update && apt-get install -y     git     curl     libpng-dev     libonig-dev     ...
+Step 7/11 : COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+ ---> e499f74896e3
+Step 8/11 : RUN useradd -G www-data,root -u $uid -d /home/$user $user
+ ---> Running in 232ef9c7dbd1
+Removing intermediate container 232ef9c7dbd1
+ ---> 870fa3220ffa
+Step 9/11 : RUN mkdir -p /home/$user/.composer &&     chown -R $user:$user /home/$user
+ ---> Running in 7ca8c0cb7f09
+Removing intermediate container 7ca8c0cb7f09
+ ---> 3d2ef9519a8e
+Step 10/11 : WORKDIR /var/www
+ ---> Running in 4a964f91edfa
+Removing intermediate container 4a964f91edfa
+ ---> 00ada639da21
+Step 11/11 : USER $user
+ ---> Running in 9f8e874fede9
+Removing intermediate container 9f8e874fede9
+ ---> fe176ff4702b
+
+Successfully built fe176ff4702b
+Successfully tagged travellist:latest
+```
+
+Cuando este proceso termine pasaremos ahora a ejecutar nuestros contenedores en segundo plano con la siguiente instrucción.
+
+```bash
+docker-compose up -d
+```
+
+La respuesta del anterior comando sera la siguiente :
+
+```bash
+Creating travellist-db    ... done
+Creating travellist-app   ... done
+Creating travellist-nginx ... done
+```
+
+Para verificar que todo este correcto ejecutamos el siguiente comando:
+
+```bash
+docker-compose ps
+```
+
+Y el resultado debería ser el siguiente:
+
+```bash
+     Name                    Command              State          Ports        
+-------------------------------------------------------------------------------
+laravel-app     docker-php-entrypoint php-fpm   Up      9000/tcp            
+app-db      	docker-entrypoint.sh mysqld     Up      3306/tcp, 33060/tcp
+app-nginx   	nginx -g daemon off;            Up      0.0.0.0:8000->80/tcp
+```
+
+Para terminar de preparar nuestra app y visualizarla en el navegador ejecutamos los siguientes comando:
+
+Instala las dependencias.
+
+```bash
+docker-compose exec app composer install
+```
+
+Genera un key unica del proyecto
+
+```bash
+docker-compose exec app php artisan key:generate
+```
+
+y ya con esto podemos visualizar un resultado en nuestro navegador.
+
+![alt!](./resources-readme/img/app1.png)
+
+Aqui ya la app esta respondiendo, con una respuesta en json personalizada.
+
+
+
+##### 2.3 Configuración MySQL
+
+Antes que nada hayq ue mencionar que la configuración diseñada para esta guía crea por defecto el usuario **root** que tiene todos los permisos del servidor de la base de datos, es recomendable evitar esto y preferible crear un usuario para la comunicacion con laravel que no tenga todos estos permisos.
+
+Para ingresar a la consola de MySQL ejecutamos el siguiente comando 
+
+```bash
+docker-compose exec db bash
+```
+
+Estando ya dentro del contenedor, ingresamos lo siguiente
+
+```bash
+mysql -u root -p
+```
+
+El cual nos pedira la contraseña de ingreso la cual es **password**, como nosotros lo habiamos definido tanto en el .env de la app como en el Dockerfile  del proyecto.
+
+Una vez logeados en MySQL verificamos que la base de datos (DB) para la app este creado con el siguiente comando:
+
+```bash
+show databases;
+```
+
+
+
+##### 2.4 Migraciones y seeder
+
+Despues de haber comprobado que la DB estaba creada, vamos a crear las tablas y poblar nuestras tablas con datos de prueba por medio de los seeders. Para hacer esto ejecutamos el siguiente comando:
+
+```php
+docker-compose exec app php artisan migrate --seed
+```
+
+En este punto ya hemos descargado la app, configurado, desplegado y poblado nuestra DB con datos de prueba.
+
+
+
+#### 3. Configuración angular
+
